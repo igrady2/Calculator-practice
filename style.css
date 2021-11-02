@@ -1,0 +1,10 @@
+.Calculator {
+    background-color: silver;
+}
+
+#calculatorBody {
+    height: 500px;
+    weight: 300px;
+    position: center;
+
+}
