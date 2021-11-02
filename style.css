@@ -1,8 +1,4 @@
-body {
-    display: flex;
-    justify-content: center;
-    
-}
+
 
 .Calculator {
     background-color: silver;
@@ -13,8 +9,7 @@ body {
     height: 100%;
     width: 100%;
     max-width: 400px;
-    display: flex;
-    justify-content: center;    
+  
 }
 
 .buttons {
@@ -23,7 +18,3 @@ body {
     width: 21%;
 
 } 
-
-#calculatorScreen {
-
-}
