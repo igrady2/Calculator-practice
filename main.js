@@ -1,6 +1,6 @@
 const inputField = document.getElementById('input');
-const acceptedKeysExact = ['1','2','3','4','5','6','7','8','9','0','*','(',')','-','+','/','Enter','C'];
-const acceptedKeysAproximate = ['x','X','=','c'];
+const acceptedKeysExact = ['1','2','3','4','5','6','7','8','9','0','*','(',')','-','+','/','.'];
+const acceptedKeysAproximate = ['x','X','=','c','Enter','C'];
 let buttonArray = [];
 
 
@@ -15,7 +15,7 @@ function assignButtonListeners() {
         })
     }
 }
-
+//calls above functions
 acceptedKeysExact.forEach(element => assignButtonArray(element));
 assignButtonListeners();
 
