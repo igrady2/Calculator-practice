@@ -17,7 +17,7 @@ function buttonListeners(array) {
     const assign = (input) => {
         let button = document.getElementById(`${input}`);
         button.addEventListener('click', (event) => {
-            inputField.value.concat(`${input}`);
+            inputField.innerHTML.concat(`${input}`);
         })
     }
     array.forEach(element => assign(element));
