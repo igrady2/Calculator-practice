@@ -1,7 +1,27 @@
 const inputField = document.getElementById('input');
-const acceptedKeysExact = ['1','2','3','4','5','6','7','8','9','0','*','(',')','-','+','/','.','Enter','C','Backspace'];
-const acceptedKeysAlternate = ['x','X','=','c'];
+const acceptedKeysExact = ['1','2','3','4','5','6','7','8','9','0','*','(',')','-','+','/','.','%','Enter','C','Backspace'];
+const acceptedKeysAlternate = ['x','X','c'];
 let buttonArray = [];
+
+//start Parser
+
+const testStr = '1.5*(1+2-3)/(4%)'
+const parser = (str) => {
+    const operand = ['*','(',')','-','+','/','.','%']
+    let parsedString = str;
+    for (let i = 0; i < operand.length; i++) {
+        parsedString = parsedString.split(operand[i]).join('&');
+    }
+    return parsedString.split('&');
+}
+
+console.log(parser(testStr));
+
+
+
+
+
+//end Parser
 
 
 //assigns button variables to buttonArray
@@ -22,7 +42,7 @@ function assignButtonListeners() {
         input.innerHTML = '';
     });
     buttonArray[acceptedKeysExact.indexOf('Backspace')].addEventListener('click', (event) => {
-        input.innerHTML =input.innerHTML.slice(0,-1)
+        input.innerHTML =input.innerHTML.slice(0,-1);
     });
 }
 
@@ -46,6 +66,8 @@ document.addEventListener('keypress', (event) => {
                 case 'X':
                     buttonArray[acceptedKeysExact.indexOf('*')].click();
                     break;
+                case 'c':
+                    buttonArray[acceptedKeysExact.indexOf('C')]
                 default:
                     console.log('Key not set yet')
             }
