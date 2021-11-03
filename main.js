@@ -4,15 +4,31 @@ const acceptedKeysAlternate = ['x','X','c'];
 let buttonArray = [];
 
 //start Parser
-
+    //parser helpers
+const add = (input1, input2) => {
+    return input1+input2;
+}
+const subtract = (input1, input2) => {
+    return input1-input2;
+}
+const multiply = (input1, input2) => {
+    return input1*input2;
+}
+const divide = (input1, input2) => {
+    return input1/input2;
+}
+const percentage = (input) => {
+    return input/100;
+}
+    // end helpers
 const testStr = '1.5*(1+2-3)/(43%)'
 const parser = (str) => {
     const operand = ['*','(',')','-','+','/','%']
     let parsedString = str;
     for (let i = 0; i < operand.length; i++) {
-        parsedString = parsedString.split(operand[i]).join('&');
+        parsedString = parsedString.split(operand[i]).join(` ${operand[i] }`);
     }
-    let parsedArray = parsedString.split('&').filter(char => char!=='');
+    let parsedArray = parsedString.split(' ').filter(char => char!=='');
     return parsedArray;
 }
 
