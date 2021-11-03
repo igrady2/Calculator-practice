@@ -87,7 +87,7 @@ document.addEventListener('keypress', (event) => {
                     buttonArray[acceptedKeysExact.indexOf('*')].click();
                     break;
                 case 'c':
-                    buttonArray[acceptedKeysExact.indexOf('C')]
+                    buttonArray[acceptedKeysExact.indexOf('C')].click()
                 default:
                     console.log('Key not set yet')
             }
