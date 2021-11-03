@@ -27,6 +27,7 @@ const parser = (str) => {
     let parsedString = str;
     for (let i = 0; i < operand.length; i++) {
         parsedString = parsedString.split(operand[i]).join(` ${operand[i] }`);
+        console.log(parsedString);
     }
     let parsedArray = parsedString.split(' ').filter(char => char!=='');
     return parsedArray;
