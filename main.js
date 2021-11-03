@@ -23,7 +23,7 @@ const percentage = (input) => {
     // end helpers
 const testStr = '1.5*(1+2-3)/(43%)'
 const parser = (str) => {
-    const operand = ['*','(',')','-','+','/','%']
+    const operand = ['*','-','+','/','%']
     let parsedString = str;
     for (let i = 0; i < operand.length; i++) {
         parsedString = parsedString.split(operand[i]).join(` ${operand[i] }`);
