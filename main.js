@@ -25,6 +25,8 @@ const testStr = '1.5*(1+2-3)/(43%)'
 const parser = (str) => {
     const operand = ['*','-','+','/','%']
     let parenthesisSplit = str.split('(').join(')').split(')');
+
+    
     //for (let i = 0; i < operand.length; i++) {
       //  parsedString = parsedString.split(operand[i]).join(` ${operand[i] }`);
         //console.log(parsedString);
@@ -36,7 +38,7 @@ const parser = (str) => {
 console.log(parser(testStr));
 
 
-
+console.log(2(2))
 
 
 //end Parser
