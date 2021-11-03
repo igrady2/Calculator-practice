@@ -8,6 +8,7 @@ let buttonArray = [];
 function assignButtonArray(lOL) {
     buttonArray.push(document.getElementById(lOL));
 }
+//assigns button variable listeners
 function assignButtonListeners() {
     for (let i = 0; i < acceptedKeysExact.length; i++) {
         buttonArray[i].addEventListener('click', (event) => {
@@ -23,7 +24,20 @@ assignButtonListeners();
 document.addEventListener('keypress', (event) => {
     const keyName = event.key;
     if (acceptedKeysExact.includes(keyName) || acceptedKeysAproximate.includes(keyName)) {
-        console.log(keyName);
+        //console.log(keyName);
+        if (acceptedKeysExact.includes(keyName)) {
+            buttonArray[acceptedKeysExact.indexOf(keyName)].click();
+        } else {
+            switch(keyName) {
+                case 'x':
+                case 'X':
+                    buttonArray[acceptedKeysExact.indexOf('*')].click();
+                    break;
+                default:
+                    console.log('Key not set yet')
+            }
+
+        }
     } else {
         console.log('Not valid key');
     }
