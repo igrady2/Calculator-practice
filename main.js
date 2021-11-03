@@ -12,7 +12,7 @@ const parser = (str) => {
     for (let i = 0; i < operand.length; i++) {
         parsedString = parsedString.split(operand[i]).join('&');
     }
-    let parsedArray = parsedString.split('&').filter(char => char==='');
+    let parsedArray = parsedString.split('&').filter(char => char!=='');
     return parsedArray;
 }
 
