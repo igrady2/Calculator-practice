@@ -1,8 +1,22 @@
-
-
 .Calculator {
     background-color: silver;
     ;
+}
+
+.CalculatorScreen {
+    margin: 0 auto;
+}
+
+.CalculatorScreenTop {
+    margin: 0 auto;
+}
+
+.CalculatorScreenBottom {
+    margin: 0 auto;
+}
+
+.buttonRow {
+    margin: 0 auto;
 }
 
 #calculatorBody {
@@ -14,7 +28,11 @@
 
 .buttons {
     padding: 20px;
-    margin: 10px auto;
+    margin-left: 10px 10px;
     width: 21%;
 
 } 
+#input {
+    border: 2px
+    padding:
+}
