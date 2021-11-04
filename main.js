@@ -79,7 +79,7 @@ const parser = (str) => {
     parenthesisSplit.forEach(element => {
         let x = element;
         for (let i=1; i < x.length-1; i++){
-            if (operand.contains(x[i]) && !isNaN(Number(x[i-1]))) {
+            if (operand.includes(x[i]) && !isNaN(Number(x[i-1]))) {
                 let firstNum;
                 let secondNum;
                 for (let j = i-1; x[j]; i++) {
