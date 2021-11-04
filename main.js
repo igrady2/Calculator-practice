@@ -67,6 +67,7 @@ const addImpliedX = (string) => {
     }
     return workingStr.join();
 }
+console.log('123456'.split())
 console.log(addImpliedX('2(1+1)')); //testing --- expected: 2*(1+1)
 console.log(addImpliedX('(2)(3)')); //testing --- expected: (2)*(3)
 console.log(addImpliedX('(1+2)3')); // testing --- expected: (1+2)*3
