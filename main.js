@@ -48,7 +48,7 @@ const operatorMain = (num1,operandStr,num2) => {
 console.log(operatorMain('1.5',"*",'150')); //testing
 
 const addImpliedX = (string) => {
-    let workingStr = string
+    let workingStr = string.split();
     let strLength = string.length-1
     for (let i = 1; i < strLength; i++) {
         if (string[i] === '(' && !operand.includes(string[i-1])) {
@@ -60,7 +60,7 @@ const addImpliedX = (string) => {
             strLength ++;
         }
     }
-    return workingStr;
+    return workingStr.join();
 }
 console.log(addImpliedX('1.5(7+2)/20')); //testing
 
