@@ -3,6 +3,8 @@ const acceptedKeysExact = ['1','2','3','4','5','6','7','8','9','0','*','(',')','
 const acceptedKeysAlternate = ['x','X','c'];
 let buttonArray = [];
 
+const operand = ['*','-','+','/','%']
+
 //start Parser
     //parser helpers
 const operatorMain = (num1,operandStr,num2) => {
@@ -65,7 +67,6 @@ console.log(addImpliedX('1.5(7+2)/20')); //testing
     // end helpers
 const testStr = '1.5*(1+2-3)/(43%)'
 const parser = (str) => {
-    const operand = ['*','-','+','/','%']
     let str2 = addImpliedX(str);
     addImpliedX = str.splice
     let parenthesisSplit = str.split('(').join(')').split(')');
