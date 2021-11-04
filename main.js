@@ -49,7 +49,7 @@ console.log(operatorMain('1.5',"*",'150')); //testing
 console.log(operatorMain('1.5',"+",'150')); //testing
 console.log(operatorMain('1.5',"/",'150')); //testing
 console.log(operatorMain('1.5',"-",'150')); //testing
-console.log(operatorMain('1.5','%'); // testing
+console.log(operatorMain('1.5','%')); // testing
 
 const addImpliedX = (string) => {
     let workingStr = string.split();
