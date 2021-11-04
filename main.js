@@ -23,27 +23,23 @@ const operatorMain = (num1,operandStr,num2) => {
         return input/100;
     }
     
-    if (operatorMain.arguments.length == 2 && operandStr === '%') {
-        return percentage(Number(num1)).toString();
-    } else if(operatorMain.arguments.length == 2 && operandStrin !== '%') {
-        console.log ('ERROR in parsing.  2 arguments passed to operatorMain but operand != %');
-    } else {
-        switch(operandStr) {
-            case '*':
-                return multiply(Number(num1),Number(num2)).toString();
-                break;
-            case '/':
-                return divide(Number(num1),Number(num2)).toString();
-                break;
-            case '+':
-                return add(Number(num1),Number(num2)).toString();
-                break;
-            case '-':
-                return subtract(Number(num1),Number(num2)).toString();
-                break;
-            default:
-                console.log('Error in parsing, no operand detected.  Operands accepted by operatorMain are %,*,/,+,-');
-        }
+    switch(operandStr) {
+        case '%': 
+            return percentage(Number(num1)).toString();
+        case '*':
+            return multiply(Number(num1),Number(num2)).toString();
+            break;
+        case '/':
+            return divide(Number(num1),Number(num2)).toString();
+            break;
+        case '+':
+            return add(Number(num1),Number(num2)).toString();
+            break;
+        case '-':
+            return subtract(Number(num1),Number(num2)).toString();
+            break;
+        default:
+            console.log('Error in parsing, no operand detected.  Operands accepted by operatorMain are %,*,/,+,-');
     }
 }
 
