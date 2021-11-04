@@ -62,9 +62,9 @@ const addImpliedX = (string) => {
             strLength ++;
         }
     }
-    return workingStr
+    return workingStr;
 }
-
+console.log(addImpliedX('1.5(7+2)/20'));
 
     // end helpers
 const testStr = '1.5*(1+2-3)/(43%)'
