@@ -23,9 +23,9 @@ const operatorMain = (num1,operandStr,num2) => {
         return input/100;
     }
     
-    if (arguments.length == 2 && operandStr === '%') {
+    if (operatorMain.arguments.length == 2 && operandStr === '%') {
         return percentage(Number(num1)).toString();
-    } else if(arguments.length == 2 && operandStrin !== '%') {
+    } else if(operatorMain.arguments.length == 2 && operandStrin !== '%') {
         console.log ('ERROR in parsing.  2 arguments passed to operatorMain but operand != %');
     } else {
         switch(operandStr) {
@@ -80,7 +80,7 @@ const parser = (str) => {
                 let firstNum;
                 let secondNum;
                 for (let j = i-1; x[j]; i++) {
-                    
+
                 }
             }         
         }
