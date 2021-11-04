@@ -46,6 +46,10 @@ const operatorMain = (num1,operandStr,num2) => {
 }
 
 console.log(operatorMain('1.5',"*",'150')); //testing
+console.log(operatorMain('1.5',"+",'150')); //testing
+console.log(operatorMain('1.5',"/",'150')); //testing
+console.log(operatorMain('1.5',"-",'150')); //testing
+console.log(operatorMain('1.5','%'); // testing
 
 const addImpliedX = (string) => {
     let workingStr = string.split();
