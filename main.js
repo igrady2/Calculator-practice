@@ -5,27 +5,84 @@ let buttonArray = [];
 
 //start Parser
     //parser helpers
-const add = (input1, input2) => {
-    return input1+input2;
+const operatorMain = (num1,operandStr,num2) => {
+     
+    const add = (input1, input2) => {
+        return input1+input2;
+    }
+    const subtract = (input1, input2) => {
+        return input1-input2;
+    }
+    const multiply = (input1, input2) => {
+        return input1*input2;
+    }
+    const divide = (input1, input2) => {
+        return input1/input2;
+    }
+    const percentage = (input) => {
+        return input/100;
+    }
+    
+    if (arguments.length == 2 && operandStr === '%') {
+        return percentage(Number(num1)).toString();
+    } else if(arguments.length == 2 && operandStrin !== '%') {
+        console.log ('ERROR in parsing.  2 arguments passed to operatorMain but operand != %');
+    } else {
+        switch(operandStr) {
+            case '*':
+                return multiply(Number(num1),Number(num2)).toString();
+                break;
+            case '/':
+                return divide(Number(num1),Number(num2)).toString();
+                break;
+            case '+':
+                return add(Number(num1),Number(num2)).toString();
+                break;
+            case '-':
+                return subtract(Number(num1),Number(num2)).toString();
+                break;
+            default:
+                console.log('Error in parsing, no operand detected.  Operands accepted by operatorMain are %,*,/,+,-');
+        }
+    }
 }
-const subtract = (input1, input2) => {
-    return input1-input2;
+
+console.log(operatorMain('1.5',"*",'150')); //testing
+
+const addImpliedX = (string) => {
+    let workingStr = string
+    let strLength = string.length-1
+    for (let i = 1; i < strLength; i++) {
+        if (string[i] === '(' && !operand.contains(string[i-1])) {
+            workingStr.splice(i,0,'*');
+            strLength ++;
+        }
+        if (string[i-1] === ')' && !operand.contains(string[i])){
+            workingStr.splice(i,0,'*');
+            strLength ++;
+        }
+    }
+    return workingStr
 }
-const multiply = (input1, input2) => {
-    return input1*input2;
-}
-const divide = (input1, input2) => {
-    return input1/input2;
-}
-const percentage = (input) => {
-    return input/100;
-}
+
+
     // end helpers
 const testStr = '1.5*(1+2-3)/(43%)'
 const parser = (str) => {
     const operand = ['*','-','+','/','%']
+    let str2 = addImpliedX(str);
+    addImpliedX = str.splice
     let parenthesisSplit = str.split('(').join(')').split(')');
-
+    parenthesisSplit.forEach(element => {
+        let x = element;
+        for (let i=1; i < x.length-1; i++){
+            if (operand.contains(x[i]) && !isNaN(Number(x[i-1]))) {
+                let firstNum;
+                let secondNum;
+                for (let j = i-1; x[j] )
+            }         
+        }
+    })
     
     //for (let i = 0; i < operand.length; i++) {
       //  parsedString = parsedString.split(operand[i]).join(` ${operand[i] }`);
@@ -38,7 +95,7 @@ const parser = (str) => {
 console.log(parser(testStr));
 
 
-console.log(2(2))
+console.log(2*(2))
 
 
 //end Parser
