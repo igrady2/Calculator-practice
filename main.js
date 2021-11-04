@@ -64,7 +64,7 @@ const addImpliedX = (string) => {
     }
     return workingStr;
 }
-console.log(addImpliedX('1.5(7+2)/20'));
+console.log(addImpliedX('1.5(7+2)/20')); //testing
 
     // end helpers
 const testStr = '1.5*(1+2-3)/(43%)'
@@ -79,10 +79,12 @@ const parser = (str) => {
             if (operand.contains(x[i]) && !isNaN(Number(x[i-1]))) {
                 let firstNum;
                 let secondNum;
-                for (let j = i-1; x[j] )
+                for (let j = i-1; x[j]; i++) {
+                    
+                }
             }         
         }
-    })
+    });
     
     //for (let i = 0; i < operand.length; i++) {
       //  parsedString = parsedString.split(operand[i]).join(` ${operand[i] }`);
