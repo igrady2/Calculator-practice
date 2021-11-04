@@ -51,11 +51,11 @@ const addImpliedX = (string) => {
     let workingStr = string
     let strLength = string.length-1
     for (let i = 1; i < strLength; i++) {
-        if (string[i] === '(' && !operand.contains(string[i-1])) {
+        if (string[i] === '(' && !operand.includes(string[i-1])) {
             workingStr.splice(i,0,'*');
             strLength ++;
         }
-        if (string[i-1] === ')' && !operand.contains(string[i])){
+        if (string[i-1] === ')' && !operand.includes(string[i])){
             workingStr.splice(i,0,'*');
             strLength ++;
         }
