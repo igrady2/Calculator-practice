@@ -49,11 +49,11 @@ const addImpliedX = (string) => {
     let workingStr = string.split('');
     let strLength = string.length
     for (let i = 1; i < strLength; i++) {
-        if (workingStr[i] === '(' && !operand.includes(workingStr[i-1])) {
+        if (workingStr[i] === '(' && !operand.includes(workingStr[i-1]) && workingStr[i] !== workingStr[i-1]){
             workingStr.splice(i,0,'*');
             
         }
-        if (workingStr[i-1] === ')' && !operand.includes(workingStr[i])){
+        if (workingStr[i-1] === ')' && !operand.includes(workingStr[i]) && workingStr[i] !== workingStr[i-1]){
             workingStr.splice(i,0,'*'); 
         }
         if (workingStr[i-1] === ')' && workingStr[i] === '('){
@@ -64,7 +64,7 @@ const addImpliedX = (string) => {
     return workingStr;
 }
 console.log('123456'.split())
-console.log(addImpliedX('(lol)+(hi)/(23)(23)(23)(23)+3')); //testing --- expected: 2*(1+1)
+console.log(addImpliedX(`((2)333)(2(24)(2(23))`)); //testing --- expected: 2*(1+1)
 console.log(addImpliedX('(2)(3)')); //testing --- expected: (2)*(3)
 console.log(addImpliedX('(1+2)3')); // testing --- expected: (1+2)*3
 console.log(addImpliedX('(1+(2*4))')); //testing --- expected: (1+(2*4)*)  --- WIP
