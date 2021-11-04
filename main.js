@@ -98,10 +98,7 @@ const parser = (str) => {
     return parenthesisSplit;
 }
 
-console.log(parser(testStr));
 
-
-console.log(2*(2))
 
 
 //end Parser
