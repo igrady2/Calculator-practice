@@ -45,14 +45,8 @@ const operatorMain = (num1,operandStr,num2) => {
     }
 }
 
-console.log(operatorMain('1.5',"*",'150')); //testing
-console.log(operatorMain('1.5',"+",'150')); //testing
-console.log(operatorMain('1.5',"/",'150')); //testing
-console.log(operatorMain('1.5',"-",'150')); //testing
-console.log(operatorMain('1.5','%')); // testing
-
 const addImpliedX = (string) => {
-    let workingStr = string.split();
+    let workingStr = string.split('');
     let strLength = string.length-1
     for (let i = 1; i < strLength; i++) {
         console.log(workingStr);
@@ -65,7 +59,7 @@ const addImpliedX = (string) => {
             
         }
     }
-    return workingStr.join();
+    return workingStr;
 }
 console.log('123456'.split())
 console.log(addImpliedX('2(1+1)')); //testing --- expected: 2*(1+1)
