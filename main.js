@@ -63,36 +63,36 @@ const addImpliedX = (string) => {
     }
     return workingStr;
 }
-console.log('123456'.split())
-console.log(addImpliedX(`((2)333)(2(24)(2(23))`)); //testing --- expected: 2*(1+1)
-console.log(addImpliedX('(2)(3)')); //testing --- expected: (2)*(3)
-console.log(addImpliedX('(1+2)3')); // testing --- expected: (1+2)*3
-console.log(addImpliedX('(1+(2*4))')); //testing --- expected: (1+(2*4)*)  --- WIP
 
-    // end helpers
+// end helpers
 const testStr = '1.5*(1+2-3)/(43%)'
+const testArr = ['(', '(', '2', ')', '*', '3', '3', '3', ')', '*', '(', '2', '*', '(', '2', '4', ')', '*', '(', '2', '*', '(', '2', '3', ')', ')']
 const parser = (str) => {
-    let str2 = addImpliedX(str);
-    let parenthesisSplit = str.split('(').join(')').split(')');
-    parenthesisSplit.forEach(element => {
-        let x = element;
-        for (let i=1; i < x.length-1; i++){
-            if (operand.includes(x[i]) && !isNaN(Number(x[i-1]))) {
-                let firstNum;
-                let secondNum;
-                for (let j = i-1; x[j]; i++) {
-
+    let returnArray = [];
+    let startArray = addImpliedX(str);
+    let workingArray = [];
+    for (let i = 0; i < startArray.length; i++) {
+        if (operand.includes(startArray[i])) {
+            for (let j = startArray.length; j > i; j--) {
+                let tempOp = startArray[i]
+                let tempUp = startArray.slice(i+1,j).join('');
+                if (!isNaN(Number(tempUp))) {// first would be 2 from testStr
+                    for (let k = 0; k < i; k++) {
+                        let tempDown = startArray.slice(k,i-1).join('');
+                        if (!isNaN(Number(tempUp))) {
+                           let injectee = operatorMain(tempDown,tempOp,tempUp);
+                           startArray.splice(k,j-k,injectee)
+                           i = 0;
+                        }
+                    }
                 }
-            }         
+            }
         }
-    });
+    }
     
-    //for (let i = 0; i < operand.length; i++) {
-      //  parsedString = parsedString.split(operand[i]).join(` ${operand[i] }`);
-        //console.log(parsedString);
-    //}
-    //let parsedArray = parsedString.split(' ').filter(char => char!=='');
-    return parenthesisSplit;
+    
+    
+    return 
 }
 
 
