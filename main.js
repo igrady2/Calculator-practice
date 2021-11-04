@@ -66,13 +66,15 @@ const addImpliedX = (string) => {
     }
     return workingStr.join();
 }
-console.log(addImpliedX('1.5(7+2)/20')); //testing
+console.log(addImpliedX('2(1+1)')); //testing
+console.log(addImpliedX('(2)(3)')); //testing
+console.log(addimpliedX('(1+2)3')); // testing
+console.log(addImpliedX('(1+(2*4))')); //testing
 
     // end helpers
 const testStr = '1.5*(1+2-3)/(43%)'
 const parser = (str) => {
     let str2 = addImpliedX(str);
-    addImpliedX = str.splice
     let parenthesisSplit = str.split('(').join(')').split(')');
     parenthesisSplit.forEach(element => {
         let x = element;
