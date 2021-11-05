@@ -3,7 +3,7 @@ const acceptedKeysExact = ['1','2','3','4','5','6','7','8','9','0','*','(',')','
 const acceptedKeysAlternate = ['x','X','c'];
 let buttonArray = [];
 
-const operand = ['*','-','+','/','%']
+const operand = ['*','/','+','-','%']
 
 //start Parser
     //parser helpers
@@ -50,14 +50,14 @@ const addImpliedX = (string) => {
     let strLength = string.length
     for (let i = 1; i < strLength; i++) {
         if (workingStr[i] === '(' && !operand.includes(workingStr[i-1]) && workingStr[i] !== workingStr[i-1]){
-            workingStr.splice(i,0,'*');
+            workingStr.splice(i,0,' * ');
             
         }
         if (workingStr[i-1] === ')' && !operand.includes(workingStr[i]) && workingStr[i] !== workingStr[i-1]){
-            workingStr.splice(i,0,'*'); 
+            workingStr.splice(i,0,' * '); 
         }
         if (workingStr[i-1] === ')' && workingStr[i] === '('){
-            workingStr.splice(i,0,'*');
+            workingStr.splice(i,0,' * ');
             
         }
     }
@@ -65,7 +65,7 @@ const addImpliedX = (string) => {
 }
 
 // end helpers
-const testStr = '1.5*(1+2-3)/(43%)'
+const testStr = '1.5 * (1 + 2 - 3) / (43%)'
 const testArr = ['(', '(', '2', ')', '*', '3', '3', '3', ')', '*', '(', '2', '*', '(', '2', '4', ')', '*', '(', '2', '*', '(', '2', '3', ')', ')']
 const parser = (str) => {
     let returnArray = [];
@@ -109,7 +109,15 @@ function assignButtonArray(lOL) {
 function assignButtonListeners() {
     for (let i = 0; i < acceptedKeysExact.length-3; i++) {
         buttonArray[i].addEventListener('click', (event) => {
+            if (acceptedKeysExact[i] === '%') {
+                input.innerHTML += `${acceptedKeysExact[i] }`
+            
+            } else if(operand.includes(acceptedKeysExact[i])) {
+                input.innerHTML += ` ${acceptedKeysExact[i]} `;
+
+            } else {
             input.innerHTML += acceptedKeysExact[i]; 
+            }
         });
     }
     buttonArray[acceptedKeysExact.indexOf('Enter')].addEventListener('click', (event) => {
@@ -119,7 +127,14 @@ function assignButtonListeners() {
         input.innerHTML = '';
     });
     buttonArray[acceptedKeysExact.indexOf('Backspace')].addEventListener('click', (event) => {
-        input.innerHTML =input.innerHTML.slice(0,-1);
+        if (input.innerHTML.slice(-2) === '% ') {
+            input.innerHTML = input.innerHTML.slice(0,-2);
+        } else if (input.innerHTML.slice(-1) === ' ') {
+            input.innerHTML = input.innerHTML.slice(0,-2);
+        } else {
+            input.innerHTML = input.innerHTML.slice(0,-1);
+        } 
+        
     });
 }
 
