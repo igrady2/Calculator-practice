@@ -64,34 +64,78 @@ const addImpliedX = (string) => {
     return workingArr;
 }
 
-const Evalulator = (arr) => {
+const evalulator = (arr) => {
     let workingArr2 = arr.join('').split(' ');
     const workingArrByChar = workingArr2.join(' ').split('');
-    while (workingArr2.length > 1) { 
-        for(let i = 1; i < workingArr2.length) {
-            let injectee = operatorMain(workingArr2[i-1],workingArr2[i], workingArr2[i+1];
-            if(workingArr2[i] === '*' || '/') {
-                
+    let x = 0
+    const parenthesis = (pE) => {
+        let tempArrP = pE;
+        for(let i = 1; i < tempArrP.length; i++) {
+            if (tempArrP[i-1] === '(' && tempArrP[i+1] === ')') {
+                tempArrP.splice(i-1,3, tempArrP[i]);
+                i = 1;
             }
         }
+        if(tempArrP === workingArr2) {
+            x = 1;
+        } else {
+            workingArr2 = tempArrP;
+        }
+        
+    }   
+    
+    const multiplyAndDivide = (mD) => {
+        let tempArrMD = mD;
+        for(let j = 0; j < tempArrMD.length; j++) {
+            let injecteeJ = operatorMain(tempArrMD[j-1],tempArrMD[j], tempArrMD[j+1]);
+            if(tempArrMD[j] === '*' || '/' && tempArrMD[j-1] !== ')' && tempArrMD[j+1] !== '(' ) {
+                tempArrMD.splice(j-1, 3, injecteeJ);
+                j = 1;
+            }
+        }
+        if (tempArrMD === workingArr2) {
+            x = 2;
+        } else {
+            workingArr2 = tempArrMD;
+            x = 0;
+        }               
     }
+
+    const addAndSubtract = (aS) => {
+        let tempArrAS = aS;
+        for(let k = 0; k < tempArrAS.length; k++) {
+            let injecteeK = operatorMain(tempArrAS[k-1],tempArrAS[k], tempArrAS[k+1]);
+            if(tempArrAS[k] === '+' || '-' && tempArrAS[k-1] !== ')' && tempArrAS[k+1] !== '(' ) {
+                tempArrAS.splice(k-1, 3, injecteeK);
+                k = 1;
+            }
+        }
+        if (tempArrAS === workingArr2) {
+            return workingArr2
+        } else {
+            workingArr2 = tempArrMD;
+            x = 0;
+        }
+    }
+
+    do {
+        if (x === 0) {
+            parenthesis(workingArr2);
+        }
+        if (x === 1) {
+            multiplyAndDivide(workingArr2);
+        }
+        if (x === 2) {
+            addAndSubtract(workingArr2);
+        }
+    } while (workingArr2.length > 1);    
 }
 
-// end helpers
-const testStr = '1.5 * (1 + 2 - 3) / (4 + 3)'
-const testArr = ['(', '(', '2', ')', '*', '3', '3', '3', ')', '*', '(', '2', '*', '(', '2', '4', ')', '*', '(', '2', '*', '(', '2', '3', ')', ')']
 const parser = (str) => {
     let startArray = addImpliedX(str);
-    let result = Evalulator(startArray);
+    let result = evalulator(startArray);
     return result;    
-    }
-
-
-
-
-
-//end Parser
-
+}
 
 //assigns button variables to buttonArray
 function assignButtonArray(lOL) {
