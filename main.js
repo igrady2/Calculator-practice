@@ -66,7 +66,7 @@ const addImpliedX = (string) => {
 
 const evalulator = (arr) => {
     let workingArr2 = arr.join('').split(' ');
-    const workingArrByChar = workingArr2.join(' ').split('');
+    console.log(workingArr2)
     let x = 0
     const parenthesis = (pE) => {
         let tempArrP = pE;
