@@ -133,9 +133,13 @@ const evalulator = (arr) => {
 
 const parser = (str) => {
     let startArray = addImpliedX(str);
-    let result = evalulator(startArray);
+    let result = evalulator(str);
     return result;    
 }
+
+console.log(parser(['1','+','1'])); // expect 2
+console.log(parser(['(','2',')'])); // expect 2
+console.log(parser(['1','+','6','/','2']) // expect 2
 
 //assigns button variables to buttonArray
 function assignButtonArray(lOL) {
