@@ -96,7 +96,7 @@ const evalulator = (arr) => {
         let tempArrMD = mD;
         for(let j = 1; j < tempArrMD.length-1; j++) {
             console.log(tempArrMD);
-            if(tempArrMD[j-1] !== ')' && tempArrMD[j+1] !== '(' && tempArrMD[j] === '*' || tempArrMD[j] === '/') {
+            if((tempArrMD[j-1] !== ')' && tempArrMD[j+1] !== '(') && (tempArrMD[j] === '*' || tempArrMD[j] === '/')) {
                 let injecteeJ = operatorMain(tempArrMD[j-1],tempArrMD[j], tempArrMD[j+1]);
                 tempArrMD.splice(j-1, 3, injecteeJ);
                 j = 1;
