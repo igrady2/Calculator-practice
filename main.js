@@ -44,6 +44,10 @@ const operatorMain = (num1,operatorStr,num2) => {
             console.log('Error in parsing, no operator detected.  operators accepted by operatorMain are %,*,/,+,-');
     }
 }
+console.log(operatorMain('23','*','2'));
+console.log(operatorMain('23','/','2'));
+console.log(operatorMain('23','+','2'));
+console.log(operatorMain('23','-','2'));
 
 const addImpliedX = (string) => {
     let workingArr = string.split(' ').filter(word => word !== '');
@@ -131,18 +135,18 @@ const evalulator = (arr) => {
     do {
         if (x === 0) {
             parenthesis(workingArr2);
-            console.log(x)
-            console.log(workingArr2)
+            console.log(x);
+            console.log(workingArr2);
         }
         if (x === 1) {
             multiplyAndDivide(workingArr2);
-            console.log(x)
-            console.log(workingArr2)
+            console.log(x);
+            console.log(workingArr2);
         }
         if (x === 2) {
             addAndSubtract(workingArr2);
-            console.log(x)
-            console.log(workingArr2)
+            console.log(x);
+            console.log(workingArr2);
         }
     } while (workingArr2.length > 1);    
 
