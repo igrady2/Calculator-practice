@@ -1,7 +1,7 @@
 const inputField = document.getElementById('input');
 const acceptedKeysExact = ['1','2','3','4','5','6','7','8','9','0','*','(',')','-','+','/','.','%','Enter','C','Backspace'];
 const acceptedKeysAlternate = ['x','X','c'];
-let buttonArray = [];
+let buttonArray = []; // houses the objects created by
 
 const operator = ['*','/','+','-','%']
 
@@ -48,16 +48,16 @@ const operatorMain = (num1,operatorStr,num2) => {
 const addImpliedX = (string) => {
     let workingArr = string.split('');
     let strLength = string.length
-    for (let i = 1; i < strLength; i++) {
-        if (workingArr[i] === '(' && workingArr[i-1] !== ' '){
-            workingArr.splice(i,0,' * ');
+    for (let i = 2; i < strLength; i++) {
+        if (workingArr[i] === '(' && !operator.includes(workingArr[i-2])) {
+            workingArr.splice(i,0,'*');
             
         }
-        if (workingArr[i-1] === ')' && workingArr[i] !== ' '){
-            workingArr.splice(i,0,' * '); 
+        if (workingArr[i-2] === ')' && !operator.includes(workingArr[i])) {
+            workingArr.splice(i,0,'*'); 
         }
         if (workingArr[i-1] === ')' && workingArr[i] === '('){
-            workingArr.splice(i,0,' * ');
+            workingArr.splice(i,0,'*');
             
         }
     }
@@ -145,17 +145,21 @@ const parser = (str) => {
 function assignButtonArray(lOL) {
     buttonArray.push(document.getElementById(lOL));
 }
+
+
 //assigns button variable listeners
 function assignButtonListeners() {
     for (let i = 0; i < acceptedKeysExact.length-3; i++) {
         buttonArray[i].addEventListener('click', (event) => {
             if (acceptedKeysExact[i] === '(') {
-                input.innerHTML += `${acceptedKeysExact[i]} `;
+                input.innerHTML += ` ${acceptedKeysExact[i]} `;
+
             } else if (acceptedKeysExact[i] === ')') {
-                input.innerHTML += ` ${acceptedKeysExact[i]}`
+                input.innerHTML += ` ${acceptedKeysExact[i]} `
             
             } else if(operator.includes(acceptedKeysExact[i])) {
                 input.innerHTML += ` ${acceptedKeysExact[i]} `;
+
             } else {
             input.innerHTML += acceptedKeysExact[i]; 
             }
