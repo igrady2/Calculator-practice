@@ -137,9 +137,7 @@ const parser = (str) => {
     return result;    
 }
 
-console.log(parser(['1','+','1'])); // expect 2
-console.log(parser(['(','2',')'])); // expect 2
-console.log(parser(['1','+','6','/','2'])); // expect 2
+
 
 //assigns button variables to buttonArray
 function assignButtonArray(lOL) {
