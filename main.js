@@ -46,14 +46,14 @@ const operatorMain = (num1,operatorStr,num2) => {
 }
 
 const addImpliedX = (string) => {
-    let workingArr = string.split('');
+    let workingArr = string.split(' ');
     let strLength = string.length
-    for (let i = 2; i < strLength; i++) {
-        if (workingArr[i] === '(' && !operator.includes(workingArr[i-2])) {
+    for (let i = 1; i < strLength; i++) {
+        if (workingArr[i] === '(' && !operator.includes(workingArr[i-1])) {
             workingArr.splice(i,0,'*');
             
         }
-        if (workingArr[i-2] === ')' && !operator.includes(workingArr[i])) {
+        if (workingArr[i-1] === ')' && !operator.includes(workingArr[i])) {
             workingArr.splice(i,0,'*'); 
         }
         if (workingArr[i-1] === ')' && workingArr[i] === '('){
