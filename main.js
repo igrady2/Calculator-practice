@@ -99,9 +99,11 @@ const evalulator = (arr) => {
         }
         if (tempArrMD === workingArr2) {
             x = 2;
+            break;
         } else {
             workingArr2 = tempArrMD;
             x = 0;
+            break;
         }               
     }
 
@@ -115,10 +117,12 @@ const evalulator = (arr) => {
             }
         }
         if (tempArrAS === workingArr2) {
-            return workingArr2.toString()
+            x = 0;
+            break;
         } else {
             workingArr2 = tempArrMD;
             x = 0;
+            break;
         }
     }
 
@@ -136,6 +140,10 @@ const evalulator = (arr) => {
             console.log(x,workingArr2)
         }
     } while (workingArr2.length > 1);    
+
+    if (workingArr2.length === 1) {
+        return workingArr2[0];
+    }
 }
 
 const parser = (str) => {
