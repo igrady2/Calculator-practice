@@ -112,8 +112,8 @@ const evalulator = (arr) => {
     const addAndSubtract = (aS) => {
         let tempArrAS = aS;
         for(let k = 0; k < tempArrAS.length; k++) {
-            let injecteeK = operatorMain(tempArrAS[k-1],tempArrAS[k], tempArrAS[k+1]);
             if(tempArrAS[k] === '+' || '-' && tempArrAS[k-1] !== ')' && tempArrAS[k+1] !== '(' ) {
+                let injecteeK = operatorMain(tempArrAS[k-1],tempArrAS[k], tempArrAS[k+1]);
                 tempArrAS.splice(k-1, 3, injecteeK);
                 k = 1;
             }
@@ -131,15 +131,18 @@ const evalulator = (arr) => {
     do {
         if (x === 0) {
             parenthesis(workingArr2);
-            console.log(x,workingArr2)
+            console.log(x)
+            console.log(workingArr2)
         }
         if (x === 1) {
             multiplyAndDivide(workingArr2);
-            console.log(x,workingArr2)
+            console.log(x)
+            console.log(workingArr2)
         }
         if (x === 2) {
             addAndSubtract(workingArr2);
-            console.log(x,workingArr2)
+            console.log(x)
+            console.log(workingArr2)
         }
     } while (workingArr2.length > 1);    
 
