@@ -115,7 +115,7 @@ const evalulator = (arr) => {
             }
         }
         if (tempArrAS === workingArr2) {
-            return workingArr2
+            return workingArr2.toString()
         } else {
             workingArr2 = tempArrMD;
             x = 0;
@@ -125,12 +125,15 @@ const evalulator = (arr) => {
     do {
         if (x === 0) {
             parenthesis(workingArr2);
+            console.log(x,workingArr2)
         }
         if (x === 1) {
             multiplyAndDivide(workingArr2);
+            console.log(x,workingArr2)
         }
         if (x === 2) {
             addAndSubtract(workingArr2);
+            console.log(x,workingArr2)
         }
     } while (workingArr2.length > 1);    
 }
@@ -138,6 +141,7 @@ const evalulator = (arr) => {
 const parser = (str) => {
     let startArray = addImpliedX(str);
     let result = evalulator(startArray);
+    console.log(result);
     return result;    
 }
 
@@ -163,7 +167,8 @@ function assignButtonListeners() {
         });
     }
     buttonArray[acceptedKeysExact.indexOf('Enter')].addEventListener('click', (event) => {
-        output.innerHTML = `${parser(input.innerHTML)}`;
+        output.innerHTML = input.innerHTML
+        input.innerHTML = `${parser(input.innerHTML)}`;
     });
     buttonArray[acceptedKeysExact.indexOf('C')].addEventListener('click', (event) => {
         input.innerHTML = '';
