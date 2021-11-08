@@ -76,6 +76,7 @@ const evalulator = (arr) => {
     const parenthesis = (pE) => {
         let tempArrP = pE;
         for(let i = 1; i < tempArrP.length; i++) {
+            console.log(tempArrP);
             if (tempArrP[i-1] === '(' && tempArrP[i+1] === ')') {
                 tempArrP.splice(i-1,3, tempArrP[i]);
                 i = 1;
@@ -94,6 +95,7 @@ const evalulator = (arr) => {
     const multiplyAndDivide = (mD) => {
         let tempArrMD = mD;
         for(let j = 1; j < tempArrMD.length; j++) {
+            console.log(tempArrMD);
             if(tempArrMD[j-1] !== ')' && tempArrMD[j+1] !== '(' && (tempArrMD[j] === '*' || '/' )) {
                 let injecteeJ = operatorMain(tempArrMD[j-1],tempArrMD[j], tempArrMD[j+1]);
                 tempArrMD.splice(j-1, 3, injecteeJ);
@@ -113,6 +115,7 @@ const evalulator = (arr) => {
     const addAndSubtract = (aS) => {
         let tempArrAS = aS;
         for(let k = 1; k < tempArrAS.length; k++) {
+            console.log(tempArrAS);
             if(tempArrAS[k-1] !== ')' && tempArrAS[k+1] !== '(' && (tempArrAS[k] === '+' || '-')) {
                 let injecteeK = operatorMain(tempArrAS[k-1],tempArrAS[k], tempArrAS[k+1]);
                 tempArrAS.splice(k-1, 3, injecteeK);
