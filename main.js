@@ -64,6 +64,8 @@ const addImpliedX = (string) => {
     return workingArr;
 }
 
+console.log(addImpliedX('1 + (204)4(5)'))
+
 const evalulator = (arr) => {
     let workingArr2 = arr.join('').split(' ');
     console.log(workingArr2)
@@ -149,13 +151,11 @@ function assignButtonListeners() {
         buttonArray[i].addEventListener('click', (event) => {
             if (acceptedKeysExact[i] === '(') {
                 input.innerHTML += `${acceptedKeysExact[i] }`;
-            }
-            if (acceptedKeysExact[i] === ')') {
+            } else if (acceptedKeysExact[i] === ')') {
                 input.innerHTML += ` ${acceptedKeysExact[i]}`
             
             } else if(operator.includes(acceptedKeysExact[i])) {
                 input.innerHTML += ` ${acceptedKeysExact[i]} `;
-
             } else {
             input.innerHTML += acceptedKeysExact[i]; 
             }
