@@ -3,7 +3,7 @@ const acceptedKeysExact = ['1','2','3','4','5','6','7','8','9','0','*','(',')','
 const acceptedKeysAlternate = ['x','X','c'];
 let buttonArray = []; // houses the objects created by
 
-const operator = ['*','/','+','-','%']
+const operator = ['*','/','+','-','%','(',')']
 
 //start Parser
     //parser helpers
@@ -46,8 +46,10 @@ const operatorMain = (num1,operatorStr,num2) => {
 }
 
 const addImpliedX = (string) => {
-    let workingArr = string.split(' ');
-    let strLength = string.length
+    let workingArr = string.split(' ').filter(word => word !== '');
+    
+    let strLength = workingArr.length-1
+    
     for (let i = 1; i < strLength; i++) {
         if (workingArr[i] === '(' && !operator.includes(workingArr[i-1])) {
             workingArr.splice(i,0,'*');
@@ -151,13 +153,8 @@ function assignButtonArray(lOL) {
 function assignButtonListeners() {
     for (let i = 0; i < acceptedKeysExact.length-3; i++) {
         buttonArray[i].addEventListener('click', (event) => {
-            if (acceptedKeysExact[i] === '(') {
-                input.innerHTML += ` ${acceptedKeysExact[i]} `;
-
-            } else if (acceptedKeysExact[i] === ')') {
-                input.innerHTML += ` ${acceptedKeysExact[i]} `
             
-            } else if(operator.includes(acceptedKeysExact[i])) {
+            if(operator.includes(acceptedKeysExact[i])) {
                 input.innerHTML += ` ${acceptedKeysExact[i]} `;
 
             } else {
