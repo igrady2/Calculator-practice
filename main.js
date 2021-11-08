@@ -66,12 +66,12 @@ const addImpliedX = (string) => {
     return workingArr;
 }
 
-console.log(addImpliedX('1 + ( 204 ) 4 ( 5 )'))
+ //console.log(addImpliedX('1 + ( 204 ) 4 ( 5 )')) // returns ['1', '+', '(', '204', ')', '*', '4', '*', '(', '5', ')']
 
 const evalulator = (arr) => {
-    let workingArr2 = arr.join('').split(' ');
-    console.log(workingArr2)
+    let workingArr2 = arr;
     let x = 0
+    
     const parenthesis = (pE) => {
         let tempArrP = pE;
         for(let i = 1; i < tempArrP.length; i++) {
@@ -90,9 +90,9 @@ const evalulator = (arr) => {
     
     const multiplyAndDivide = (mD) => {
         let tempArrMD = mD;
-        for(let j = 0; j < tempArrMD.length; j++) {
-            let injecteeJ = operatorMain(tempArrMD[j-1],tempArrMD[j], tempArrMD[j+1]);
+        for(let j = 1; j < tempArrMD.length; j++) {
             if(tempArrMD[j] === '*' || '/' && tempArrMD[j-1] !== ')' && tempArrMD[j+1] !== '(' ) {
+                let injecteeJ = operatorMain(tempArrMD[j-1],tempArrMD[j], tempArrMD[j+1]);
                 tempArrMD.splice(j-1, 3, injecteeJ);
                 j = 1;
             }
@@ -137,7 +137,7 @@ const evalulator = (arr) => {
 
 const parser = (str) => {
     let startArray = addImpliedX(str);
-    let result = evalulator(str);
+    let result = evalulator(startArray);
     return result;    
 }
 
