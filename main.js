@@ -1,7 +1,7 @@
 const inputField = document.getElementById('input');
 const acceptedKeysExact = ['1','2','3','4','5','6','7','8','9','0','*','(',')','-','+','/','.','%','Enter','C','Backspace'];
 const acceptedKeysAlternate = ['x','X','c'];
-let buttonArray = []; // houses the objects created by
+let buttonArray = []; // houses the objects created by assignButtonArray
 
 const operator = ['*','/','+','-','%','(',')']
 
@@ -82,8 +82,10 @@ const evalulator = (arr) => {
         }
         if(tempArrP === workingArr2) {
             x = 1;
+            return;
         } else {
             workingArr2 = tempArrP;
+            return;
         }
         
     }   
@@ -99,11 +101,11 @@ const evalulator = (arr) => {
         }
         if (tempArrMD === workingArr2) {
             x = 2;
-            break;
+            return;
         } else {
             workingArr2 = tempArrMD;
             x = 0;
-            break;
+            return;
         }               
     }
 
@@ -118,11 +120,11 @@ const evalulator = (arr) => {
         }
         if (tempArrAS === workingArr2) {
             x = 0;
-            break;
+            return;
         } else {
             workingArr2 = tempArrMD;
             x = 0;
-            break;
+            return;
         }
     }
 
