@@ -41,7 +41,7 @@ const operatorMain = (num1,operatorStr,num2) => {
             return subtract(Number(num1),Number(num2)).toString();
             break;
         default:
-            console.log('Error in parsing, no operator detected.  operators accepted by operatorMain are %,*,/,+,-');
+            console.log(`Error input to operatorMain was ${[num1,operatorStr,num2]}.  operators accepted by operatorMain are %,*,/,+,-`);
     }
 }
 
