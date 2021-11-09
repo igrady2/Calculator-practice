@@ -1,38 +1,56 @@
-.Calculator {
-    background-color: silver;
-    ;
+body {
+    background-color: black;
 }
 
-.CalculatorScreen {
-    margin: 0 auto;
+content {
+    width: 1000px;
+    height: 550px;
+    background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)), url(./calcbackground.jpg);
+    margin: 20px auto; 
 }
-
-.CalculatorScreenTop {
-    margin: 0 auto;
-}
-
-.CalculatorScreenBottom {
-    margin: 0 auto;
-}
-
-.buttonRow {
-    justify-content: space-evenly;
-}
-
 #calculatorBody {
-    height: 100%;
-    width: 100%;
-    max-width: 400px;
-  
+    width: 320px;
+    height: 520px;
+    background-color: silver;
+    margin: 0 auto;
+    top: 20px;
+    position: relative;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);   
 }
 
-.buttons {
-    display: inline-block;
-    padding: 20px;
-    margin: 5px auto;
-    width: 21%;
-
-} 
-#input {
-    border: 2px
+#screen {
+    height: 120px;
 }
+
+#calculatorButtons {
+    height: 400px;
+}
+
+#calculatorScreenTop {
+    text-align: right;
+    height: 20px;
+    margin: 0 20px;
+    padding-top: 20px;
+    font-size: 15px;
+    color: rgb(82, 82, 82);
+}
+#calculatorScreenBottom {
+    text-align: right;
+    height: 60px;
+    margin: 10px 20px;
+    padding-top: 20px;
+    font-size: 20px;
+    color: rgb(82, 82, 82);
+}
+
+.operatorCal, .operatorNum, .operatorEnter, .operatorP, .operatorPM, .num {
+    width: 50px;
+    height: 50px;
+    margin: 15px;
+    float: left;
+    border-radius: 25%;
+    font-weight: bold;
+    font-size: 15px;
+}
+

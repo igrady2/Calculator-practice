@@ -2,7 +2,7 @@ import { operatorMain, addImpliedX, evalulator, parser } from './modules/parser.
 
 
 const inputField = document.getElementById('input');
-const acceptedKeysExact = ['1','2','3','4','5','6','7','8','9','0','*','(',')','-','+','/','.','%','Enter','C','Backspace'];
+const acceptedKeysExact = ['1','2','3','4','5','6','7','8','9','0','*','(',')','-','+','/','.','^','%','Enter','C','Backspace'];
 const acceptedKeysAlternate = ['x','X','c'];
 let buttonArray = []; // houses the objects created by assignButtonArray
 
@@ -96,8 +96,8 @@ function buttonDisabler2(id) {
 } 
 
 function buttonEnabler2(id) {
-    if (buttonArray[acceptedKeysExact.indexOf(`${id}`)].disabled === true) {
-        buttonArray[acceptedKeysExact.indexOf(`${id}`)].disabled = false;
+    if (buttonArray[acceptedKeysExact.indexOf(id)].disabled === true) {
+        buttonArray[acceptedKeysExact.indexOf(id)].disabled = false;
     }
 }
 
