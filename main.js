@@ -6,7 +6,7 @@ const acceptedKeysExact = ['1','2','3','4','5','6','7','8','9','0','*','(',')','
 const acceptedKeysAlternate = ['x','X','c'];
 let buttonArray = []; // houses the objects created by assignButtonArray
 
-const operator = ['*','/','+','-','%','(',')']
+const operator = ['*','/','+','-','%','^','(',')']
 
 
 //assigns button variables to buttonArray
@@ -50,6 +50,15 @@ function assignButtonListeners() {
 acceptedKeysExact.forEach(element => assignButtonArray(element));
 assignButtonListeners();
 
+function disableButton(id) {
+    buttonArray[acceptedKeysExact.indexOf(`${id}`)].disabled = true;
+} 
+
+function enableButton(id) {
+    buttonArray[acceptedKeysExact.indexOf(`${id}`)].disabled = false;
+}
+
+
 //input listeners for key presses
 document.addEventListener('keypress', (event) => {
     const keyName = event.key;
@@ -75,4 +84,26 @@ document.addEventListener('keypress', (event) => {
     } else {
         console.log('Not valid key');
     }
+});
+
+
+//button control
+
+function disableButton(id) {
+    buttonArray[acceptedKeysExact.indexOf(`${id}`)].disabled = true;
+} 
+
+function enableButton(id) {
+    buttonArray[acceptedKeysExact.indexOf(`${id}`)].disabled = false;
+}
+
+input.addEventListener('input', (event) => {
+    if (operator.includes(input.innerHTML.slice(-2,-1))) {
+        operator.slice(0,6).concat(operator.slice(-1)).forEach(element => disableButton(element));
+    }
+    if (!operator.includes(input.innerHTML.slice(-2,-1))) {
+        operator.slice(0,6).concat(operator.slice(-1)).forEach(element => enableButton(element));
+    }
+
+
 });
