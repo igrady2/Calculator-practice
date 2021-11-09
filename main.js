@@ -89,13 +89,13 @@ document.addEventListener('keypress', (event) => {
 
 //button control
 
-function buttonDisabler(id) {
+function buttonDisabler2(id) {
     if (!buttonArray[acceptedKeysExact.indexOf(`${id}`)].disabled) {
         buttonArray[acceptedKeysExact.indexOf(`${id}`)].disabled = true;
     }
 } 
 
-function buttonEnabler(id) {
+function buttonEnabler2(id) {
     if (buttonArray[acceptedKeysExact.indexOf(`${id}`)].disabled) {
         buttonArray[acceptedKeysExact.indexOf(`${id}`)].disabled = false;
     }
@@ -112,28 +112,28 @@ input.addEventListener('input', (event) => {
         }
     }
     if (operator.includes(input.innerHTML.slice(-2,-1)) || input.innerHTML === null) {
-        buttonDisabler('+');
-        buttonDisabler('-');
-        buttonDisabler('*');
-        buttonDisabler('/');
-        buttonDisabler(')');
-        buttonDisabler('%');
-        buttonDisabler('^');
+        buttonDisabler2('+');
+        buttonDisabler2('-');
+        buttonDisabler2('*');
+        buttonDisabler2('/');
+        buttonDisabler2(')');
+        buttonDisabler2('%');
+        buttonDisabler2('^');
     }
     if (!operator.includes(input.innerHTML.slice(-2,-1))) {
-        buttonDisabler('+');
-        buttonDisabler('-');
-        buttonDisabler('*');
-        buttonDisabler('/');
-        buttonDisabler(')');
-        buttonDisabler('%');
-        buttonDisabler('^');
+        buttonDisabler2('+');
+        buttonDisabler2('-');
+        buttonDisabler2('*');
+        buttonDisabler2('/');
+        buttonDisabler2(')');
+        buttonDisabler2('%');
+        buttonDisabler2('^');
     }
     if ( !pmatch() || operator.includes(input.innerHTML.slice(-2,-1))) {
-        buttonDisabler('Enter');
+        buttonDisabler2('Enter');
     }
     if ( pmatch() && !operator.includes(input.innerHTML.slice(-2,-1))) {
-        buttonEnabler('Enter');
+        buttonEnabler2('Enter');
     }
 
 });
