@@ -111,11 +111,23 @@ input.addEventListener('input', (event) => {
             return false;
         }
     }
-    if (operator.includes(input.innerHTML.slice(-2,-1))) {
-        operator.slice(0,6).concat(operator.slice(-1)).forEach(element => buttonDisabler(element));
+    if (operator.includes(input.innerHTML.slice(-2,-1)) || input.innerHTML === null) {
+        buttonDisabler('+');
+        buttonDisabler('-');
+        buttonDisabler('*');
+        buttonDisabler('/');
+        buttonDisabler(')');
+        buttonDisabler('%');
+        buttonDisabler('^');
     }
     if (!operator.includes(input.innerHTML.slice(-2,-1))) {
-        operator.slice(0,6).concat(operator.slice(-1)).forEach(element => buttonEnabler(element));
+        buttonDisabler('+');
+        buttonDisabler('-');
+        buttonDisabler('*');
+        buttonDisabler('/');
+        buttonDisabler(')');
+        buttonDisabler('%');
+        buttonDisabler('^');
     }
     if ( !pmatch() || operator.includes(input.innerHTML.slice(-2,-1))) {
         buttonDisabler('Enter');
