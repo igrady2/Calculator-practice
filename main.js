@@ -90,13 +90,13 @@ document.addEventListener('keypress', (event) => {
 //button control
 
 function buttonDisabler2(id) {
-    if (!buttonArray[acceptedKeysExact.indexOf(`${id}`)].disabled) {
+    if (!buttonArray[acceptedKeysExact.indexOf(`${id}`)].disabled === true) {
         buttonArray[acceptedKeysExact.indexOf(`${id}`)].disabled = true;
     }
 } 
 
 function buttonEnabler2(id) {
-    if (buttonArray[acceptedKeysExact.indexOf(`${id}`)].disabled) {
+    if (buttonArray[acceptedKeysExact.indexOf(`${id}`)].disabled === true) {
         buttonArray[acceptedKeysExact.indexOf(`${id}`)].disabled = false;
     }
 }
