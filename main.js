@@ -50,11 +50,11 @@ function assignButtonListeners() {
 acceptedKeysExact.forEach(element => assignButtonArray(element));
 assignButtonListeners();
 
-function disableButton(id) {
+function buttonDisabler(id) {
     buttonArray[acceptedKeysExact.indexOf(`${id}`)].disabled = true;
 } 
 
-function enableButton(id) {
+function buttonEnabler(id) {
     buttonArray[acceptedKeysExact.indexOf(`${id}`)].disabled = false;
 }
 
@@ -89,21 +89,39 @@ document.addEventListener('keypress', (event) => {
 
 //button control
 
-function disableButton(id) {
-    buttonArray[acceptedKeysExact.indexOf(`${id}`)].disabled = true;
+function buttonDisabler(id) {
+    if (!buttonArray[acceptedKeysExact.indexOf(`${id}`)].disabled) {
+        buttonArray[acceptedKeysExact.indexOf(`${id}`)].disabled = true;
+    }
 } 
 
-function enableButton(id) {
-    buttonArray[acceptedKeysExact.indexOf(`${id}`)].disabled = false;
+function buttonEnabler(id) {
+    if (buttonArray[acceptedKeysExact.indexOf(`${id}`)].disabled) {
+        buttonArray[acceptedKeysExact.indexOf(`${id}`)].disabled = false;
+    }
 }
 
 input.addEventListener('input', (event) => {
+    function pmatch() { // returns true if the quantity of '(' is equal to the quantity of ')'
+        let forwardPCount = input.innerHTML.match(/[)]/g).length;
+        let backwardPCount = input.innerHTML.match(/[(]/g).length;
+        if (forwardPCount === backwardPCount) {
+            return true;
+        } else {
+            return false;
+        }
+    }
     if (operator.includes(input.innerHTML.slice(-2,-1))) {
-        operator.slice(0,6).concat(operator.slice(-1)).forEach(element => disableButton(element));
+        operator.slice(0,6).concat(operator.slice(-1)).forEach(element => buttonDisabler(element));
     }
     if (!operator.includes(input.innerHTML.slice(-2,-1))) {
-        operator.slice(0,6).concat(operator.slice(-1)).forEach(element => enableButton(element));
+        operator.slice(0,6).concat(operator.slice(-1)).forEach(element => buttonEnabler(element));
     }
-
+    if ( !pmatch() || operator.includes(input.innerHTML.slice(-2,-1))) {
+        buttonDisabler('Enter');
+    }
+    if ( pmatch() && !operator.includes(input.innerHTML.slice(-2,-1))) {
+        buttonEnabler('Enter');
+    }
 
 });
