@@ -111,7 +111,7 @@ input.addEventListener('input', (event) => {
             return false;
         }
     }
-    if (operator.includes(input.innerHTML.slice(-2,-1)) || input.innerHTML === null) {
+    if (operator.includes(input.innerHTML.slice(-2,-1)) || input.innerHTML === undefined) {
         buttonDisabler2('+');
         buttonDisabler2('-');
         buttonDisabler2('*');
