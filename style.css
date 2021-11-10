@@ -36,6 +36,7 @@ body {
 
 #calculatorButtons {
     height: 480px;
+    margin-top: 5px;
 }
 
 #calculatorScreenTop {
@@ -65,4 +66,10 @@ body {
     font-size: 20px;
 }
 
+.operatorPM, .operatorEnter, .operatorNum, .operatorP, .operatorCal {
+    background-color: rgb(201, 188, 180);
+}
 
+.operatorCal:disabled, .operatorEnter:disabled, .operatorP:disabled, .operatorPM:disabled, .operatorNum:disabled {
+    background-color: red;
+}
