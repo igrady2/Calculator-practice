@@ -70,6 +70,10 @@ body {
     background-color: rgb(201, 188, 180);
 }
 
+.operatorNum {
+    background-color: rgba(201, 188, 180, 0.884);
+}
+
 .operatorCal:disabled, .operatorEnter:disabled, .operatorP:disabled, .operatorPM:disabled, .operatorNum:disabled {
     background-color: red;
 }
