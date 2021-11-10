@@ -6,7 +6,7 @@ body {
 
 #calculatorBG {
     width: 1000px;
-    height: 550px;
+    height: 660px;
     background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)), url('./calcbackground.jpg');
     z-index: 1;
     position: relative;
@@ -14,7 +14,7 @@ body {
 }
 #calculatorBody {
     width: 320px;
-    height: 520px;
+    height: 620px;
     background-color: silver;
     margin: 0 auto;
     top: 20px;
@@ -25,6 +25,7 @@ body {
 
 #screen {
     height: 120px;
+
 }
 
 #calculatorButtons {
@@ -38,23 +39,30 @@ body {
     padding-top: 20px;
     font-size: 15px;
     color: rgb(82, 82, 82);
+    background-color: white;
+    border-radius: 5px;
+    border: 1px;
 }
 #calculatorScreenBottom {
     text-align: right;
-    height: 60px;
+    height: 40px;
     margin: 10px 20px;
     padding-top: 20px;
     font-size: 20px;
-    color: rgb(82, 82, 82);
+    color: rgb(0 0 0);
+    background-color: white;
+    border-radius: 5px;
+    
 }
 
 .operatorCal, .operatorNum, .operatorEnter, .operatorP, .operatorPM, .num {
     width: 60px;
     height: 60px;
-    margin: 5px;
+    margin: 10px;
     float: left;
     border-radius: 25%;
     font-weight: bold;
     font-size: 20px;
 }
+
 
