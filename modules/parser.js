@@ -55,6 +55,12 @@ const addImpliedX = (string) => {
             
         }
     }
+
+    for (let j = 0; j < strLength-1; j++) { // adds 0 infront of - signs to use subtraction to make negative number
+        if (workingArr[j] === '-' && workingArr[j+1] === ' ') {
+            workingArr.splice(j,0,'0');            
+        }
+    }
     return workingArr;
 }
 
