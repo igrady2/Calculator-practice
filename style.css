@@ -22,37 +22,37 @@ body {
     border-radius: 5px;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);   
 }
-
+#spacer {
+    height: 10px;
+}
 #screen {
+    margin: 0 10px;
     height: 120px;
+    background-color: #ececec;
+    border-radius: 5px;
+    border-style: inset;
 
 }
 
 #calculatorButtons {
-    height: 400px;
+    height: 480px;
 }
 
 #calculatorScreenTop {
     text-align: right;
     height: 20px;
-    margin: 0 20px;
-    padding-top: 20px;
+    margin: 10px 5px;
+    padding-top: 10px;
     font-size: 15px;
     color: rgb(82, 82, 82);
-    background-color: white;
-    border-radius: 5px;
-    border: 1px;
 }
 #calculatorScreenBottom {
     text-align: right;
     height: 40px;
-    margin: 10px 20px;
-    padding-top: 20px;
+    margin: 10px 6px;
+    padding: 10px 0;
     font-size: 20px;
     color: rgb(0 0 0);
-    background-color: white;
-    border-radius: 5px;
-    
 }
 
 .operatorCal, .operatorNum, .operatorEnter, .operatorP, .operatorPM, .num {
