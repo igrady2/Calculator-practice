@@ -105,17 +105,16 @@ const evalulator = (arr) => {
             if((tempArrMD[j-1] !== ')' && tempArrMD[j+1] !== '(') && (tempArrMD[j] === '*' || tempArrMD[j] === '/')) {
                 let injecteeJ = operatorMain(tempArrMD[j-1],tempArrMD[j], tempArrMD[j+1]);
                 tempArrMD.splice(j-1, 3, injecteeJ);
-                j = 1;
-            }
-        
-            if (j === tempArrdMD.length-1 && tempArrMD === workingArr2) {
-            x = 2;
-            return;
-            } 
-            if (j === tempArrMD.length-1 && tempArrMD !== workingArr2) {
-                workingArr2 = tempArrMD;
-                x = 0;
-                return;
+                j = 1; 
+                if (j === tempArrdMD.length-1 && tempArrMD === workingArr2) {
+                    x = 2;
+                    return;
+                } 
+                if (j === tempArrMD.length-1 && tempArrMD !== workingArr2) {
+                    workingArr2 = tempArrMD;
+                    x = 0;
+                    return;
+                }
             }
         } 
     }
@@ -127,18 +126,12 @@ const evalulator = (arr) => {
                 let injecteeK = operatorMain(tempArrAS[k-1],tempArrAS[k], tempArrAS[k+1]);
                 tempArrAS.splice(k-1, 3, injecteeK);
                 k = 1;
-            
+            }
             if (k === tempArrAS.length-1) {
                 workingArr2 = tempArrAS 
                 x = 0;
                 return;
-            }
-        
-        
-        } else {
-            workingArr2 = tempArrAS;
-            x = 0;
-            return;
+            }     
         }
     }
 
