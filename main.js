@@ -2,7 +2,7 @@ import { operatorMain, addImpliedX, evalulator, parser } from './modules/parser.
 
 
 const inputField = document.getElementById('input');
-const acceptedKeysExact = ['1','2','3','4','5','6','7','8','9','0','*','(',')','-','+','/','.','^','%','Enter','C','Backspace'];
+const acceptedKeysExact = ['1','2','3','4','5','6','7','8','9','0','*','(',')','-','+','/','.','^','+/-','%','Enter','C','Backspace'];
 const acceptedKeysAlternate = ['x','X','c'];
 let buttonArray = []; // houses the objects created by assignButtonArray
 
@@ -42,22 +42,22 @@ function assignButtonListeners() {
         } else {
             input.innerHTML = input.innerHTML.slice(0,-1);
         } 
-        
+    });
+    buttonArray[acceptedKeysExact.indexOf('+/-')].addEventListener('click', (event) => {
+        if (input.innerHTML.split(' ').length === 1) {
+            if (input.innerHTML[0] === '-') {
+                input.innerHTML = input.innerHTML.slice(1,input.innerHTML.length);
+            } else {
+
+            }
+        }
+        input.innerHTML = '-('.concat(input.innerHTML.unshift).concat(')');
     });
 }
 
 //calls above functions
 acceptedKeysExact.forEach(element => assignButtonArray(element));
 assignButtonListeners();
-
-function buttonDisabler(id) {
-    buttonArray[acceptedKeysExact.indexOf(`${id}`)].disabled = true;
-} 
-
-function buttonEnabler(id) {
-    buttonArray[acceptedKeysExact.indexOf(`${id}`)].disabled = false;
-}
-
 
 //input listeners for key presses
 document.addEventListener('keypress', (event) => {
@@ -88,7 +88,7 @@ document.addEventListener('keypress', (event) => {
 
 
 //button control
-
+/*
 function buttonDisabler2(id) {
     if (!buttonArray[acceptedKeysExact.indexOf(`${id}`)].disabled === true) {
         buttonArray[acceptedKeysExact.indexOf(`${id}`)].disabled = true;
@@ -136,4 +136,4 @@ input.addEventListener('input', (event) => {
         buttonEnabler2('Enter');
     }
 
-});
+});*/

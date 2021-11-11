@@ -15,6 +15,9 @@ const operatorMain = (num1,operatorStr,num2) => {
     const percentage = (input) => {
         return input/100;
     }
+    const exponentialize = (input1, input2) => {
+        return input1^input2;
+    }
     
     switch(operatorStr) {
         case '%': 
@@ -31,15 +34,18 @@ const operatorMain = (num1,operatorStr,num2) => {
         case '-':
             return subtract(Number(num1),Number(num2)).toString();
             break;
+        case '^':
+            return exponentialize(Number(num1),Number(num2)).toString();
+            break;
         default:
-            console.log(`Error input to operatorMain was ${[num1,operatorStr,num2]}.  operators accepted by operatorMain are %,*,/,+,-`);
+            console.log(`Error input to operatorMain was ${[num1,operatorStr,num2]}.  operators accepted by operatorMain are %,*,/,+,-,^`);
     }
 }
 
 
 const addImpliedX = (string) => {
     let workingArr = string.split(' ').filter(word => word !== '');
-    
+    console.log(`before addImpliedX ${workingArr}`)
     let strLength = workingArr.length-1
     
     for (let i = 1; i < strLength; i++) {
@@ -57,10 +63,11 @@ const addImpliedX = (string) => {
     }
 
     for (let j = 0; j < strLength-1; j++) { // adds 0 infront of - signs to use subtraction to make negative number
-        if (workingArr[j] === '-' && workingArr[j+1] === ' ') {
+        if (workingArr[j] === '-' && (operator.filter(word => word !== ')').includes(workingArr[j-1] || j === 0))) {
             workingArr.splice(j,0,'0');            
         }
     }
+    console.log(`after addImpliedX ${workingArr}`)
     return workingArr;
 }
 
