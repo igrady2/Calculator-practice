@@ -43,8 +43,8 @@ const operatorMain = (num1,operatorStr,num2) => {
             console.log(`Error input to operatorMain was ${[num1,operatorStr,num2]}.  operators accepted by operatorMain are %,*,/,+,-,^`);
     }
 }
-console.log(operatorMain(0-4));
-
+console.log(operatorMain('0','-','4'));
+console.log(operator.filter(word => word !== ')'))
 const addImpliedX = (string) => {
     let workingArr = string.split(' ').filter(word => word !== '');
     console.log(`before addImpliedX ${workingArr}`)
@@ -122,15 +122,17 @@ const evalulator = (arr) => {
     const addAndSubtract = (aS) => {
         let tempArrAS = aS;
         for(let k = 1; k < tempArrAS.length-1; k++) {
-            if((tempArrAS[k] === '+' || tempArrAS[k] === '-') && (tempArrAS[k-1] !== ')' && tempArrAS[k+1] !== '(' && tempArrAS[k-2] !== '/' && tempArrAS[k-2] !== '*' && tempArrAS[k+2] !== '/' && tempArrAS[k+2] !== '*')) {
-                let injecteeK = operatorMain(tempArrAS[k-1],tempArrAS[k], tempArrAS[k+1]);
-                tempArrAS.splice(k-1, 3, injecteeK);
-                k = 1;
-            }
-            if (k === tempArrAS.length-1) {
-                workingArr2 = tempArrAS 
-                x = 0;
-                return;
+            if( tempArrAS[k] === '+' || tempArrAS[k] === '-') {
+                if ( tempArrAS[k-1] !== ')' && tempArrAS[k+1] !== '(' && tempArrAS[k-2] !== '/' && tempArrAS[k-2] !== '*' && tempArrAS[k+2] !== '/' && tempArrAS[k+2] !== '*') {
+                    let injecteeK = operatorMain(tempArrAS[k-1],tempArrAS[k], tempArrAS[k+1]);
+                    tempArrAS.splice(k-1, 3, injecteeK);
+                    k = 1;
+                }
+                if (k === tempArrAS.length-1) {
+                    workingArr2 = tempArrAS 
+                    x = 0;
+                    return;
+                }
             }     
         }
     }
