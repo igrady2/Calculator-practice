@@ -1,4 +1,4 @@
-import { operatorMain, addImpliedX, evalulator, parser } from './modules/parser.js';
+import { operatorMain, addImpliedX, evalulator, parser, operator } from './modules/parser.js';
 
 
 const inputField = document.getElementById('input');
@@ -6,7 +6,7 @@ const acceptedKeysExact = ['1','2','3','4','5','6','7','8','9','0','*','(',')','
 const acceptedKeysAlternate = ['x','X','c'];
 let buttonArray = []; // houses the objects created by assignButtonArray
 
-const operator = ['*','/','+','-','%','^','(',')']
+
 
 
 //assigns button variables to buttonArray

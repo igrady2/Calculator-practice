@@ -1,3 +1,5 @@
+const operator = ['*','/','+','-','%','^','(',')']
+
 const operatorMain = (num1,operatorStr,num2) => {
      
     const add = (input1, input2) => {
@@ -164,4 +166,4 @@ const parser = (str) => {
     return result;    
 }
 
-export {operatorMain, addImpliedX, evalulator, parser};
+export {operatorMain, addImpliedX, evalulator, parser, operator};
