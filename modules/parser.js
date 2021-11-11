@@ -43,7 +43,7 @@ const operatorMain = (num1,operatorStr,num2) => {
             console.log(`Error input to operatorMain was ${[num1,operatorStr,num2]}.  operators accepted by operatorMain are %,*,/,+,-,^`);
     }
 }
-
+console.log(operatorMain(0-4));
 
 const addImpliedX = (string) => {
     let workingArr = string.split(' ').filter(word => word !== '');
@@ -65,9 +65,11 @@ const addImpliedX = (string) => {
     }
 
     for (let j = 0; j < strLength-1; j++) { // adds 0 infront of - signs to use subtraction to make negative number
-        if (workingArr[j] === '-' && (operator.filter(word => word !== ')').includes(workingArr[j-1] || j === 0))) {
-            workingArr.splice(j,0,'0');            
-        }
+        if (workingArr[j] === '-') {
+            if (j === 0 || operator.filter(word => word !== ')').includes(workingArr[j-1])) {
+                workingArr.splice(j,2,'(','0','-',workingArr[j],')'); 
+            }
+        } 
     }
     console.log(`after addImpliedX ${workingArr}`)
     return workingArr;
@@ -87,13 +89,12 @@ const evalulator = (arr) => {
                 tempArrP.splice(i-1,3, tempArrP[i]);
                 i = 1;
             }
-        }
-        if(tempArrP === workingArr2) {
-            x = 1;
+        
+            if(i === tempArrP.length-1) {
+                workingArr2 = tempArrP;
+                x = 1;
             return;
-        } else {
-            workingArr2 = tempArrP;
-            return;
+            }
         }
         
     }   
@@ -106,30 +107,34 @@ const evalulator = (arr) => {
                 tempArrMD.splice(j-1, 3, injecteeJ);
                 j = 1;
             }
-        }
-        if (tempArrMD === workingArr2) {
+        
+            if (j === tempArrdMD.length-1 && tempArrMD === workingArr2) {
             x = 2;
             return;
-        } else {
-            workingArr2 = tempArrMD;
-            x = 0;
-            return;
-        }               
+            } 
+            if (j === tempArrMD.length-1 && tempArrMD !== workingArr2) {
+                workingArr2 = tempArrMD;
+                x = 0;
+                return;
+            }
+        } 
     }
 
     const addAndSubtract = (aS) => {
         let tempArrAS = aS;
         for(let k = 1; k < tempArrAS.length-1; k++) {
-            if((tempArrAS[k-1] !== ')' && tempArrAS[k+1] !== '(') && (tempArrAS[k] === '+' || tempArrAS[k] === '-')) {
+            if((tempArrAS[k] === '+' || tempArrAS[k] === '-') && (tempArrAS[k-1] !== ')' && tempArrAS[k+1] !== '(' && tempArrAS[k-2] !== '/' && tempArrAS[k-2] !== '*' && tempArrAS[k+2] !== '/' && tempArrAS[k+2] !== '*')) {
                 let injecteeK = operatorMain(tempArrAS[k-1],tempArrAS[k], tempArrAS[k+1]);
                 tempArrAS.splice(k-1, 3, injecteeK);
                 k = 1;
-                
+            
+            if (k === tempArrAS.length-1) {
+                workingArr2 = tempArrAS 
+                x = 0;
+                return;
             }
-        }
-        if (tempArrAS === workingArr2) {
-            x = 0;
-            return;
+        
+        
         } else {
             workingArr2 = tempArrAS;
             x = 0;
