@@ -62,11 +62,10 @@ const operatorMain = (num1,operatorStr,num2) => {
     }
 }
 
-const addImpliedX = (string) => {
-    
+const addImpliedX = (arr) => {
+    let workingArr = arr;
     console.log(`before addImpliedX ${workingArr}`)
-    let strLength = workingArr.length-1
-    
+        
     for (let i = 1; i < strLength; i++) {
         if (workingArr[i] === '(' && typeof workingArr[i-1] === "number") {
             workingArr.splice(i,0,'*');
