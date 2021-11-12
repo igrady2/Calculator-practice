@@ -1,5 +1,23 @@
 const operator = ['*','/','+','-','%','^','(',')']
 
+
+const makeArr = (string) => {
+    return string.split(' ').filter(word => word !== '');
+}
+
+const numToString = (num) => {
+    return num.toString();
+}
+
+const arrStrElementsToNum = (arr) => {
+    
+    function makeNumIfNotNaN (str) {
+        return (isNaN(Number(str)) ? str : Number(str));
+    }
+    
+    return arr.map((makeNumIfNotNaN));
+}
+
 const operatorMain = (num1,operatorStr,num2) => {
      
     const add = (input1, input2) => {
@@ -18,44 +36,43 @@ const operatorMain = (num1,operatorStr,num2) => {
         return input/100;
     }
     const exponentialize = (input1, input2) => {
-        return input1^input2;
+        return Math.pow(input1,input2);
     }
     
     switch(operatorStr) {
         case '%': 
-            return percentage(Number(num1)).toString();
+            return percentage(num1);
         case '*':
-            return multiply(Number(num1),Number(num2)).toString();
+            return multiply(num1,num2);
             break;
         case '/':
-            return divide(Number(num1),Number(num2)).toString();
+            return divide(num1,num2);
             break;
         case '+':
-            return add(Number(num1),Number(num2)).toString();
+            return add(num1,num2);
             break;
         case '-':
-            return subtract(Number(num1),Number(num2)).toString();
+            return subtract(num1,num2);
             break;
         case '^':
-            return exponentialize(Number(num1),Number(num2)).toString();
+            return exponentialize(num1,num2);
             break;
         default:
             console.log(`Error input to operatorMain was ${[num1,operatorStr,num2]}.  operators accepted by operatorMain are %,*,/,+,-,^`);
     }
 }
-console.log(operatorMain('0','-','4'));
-console.log(operator.filter(word => word !== ')'))
+
 const addImpliedX = (string) => {
-    let workingArr = string.split(' ').filter(word => word !== '');
+    
     console.log(`before addImpliedX ${workingArr}`)
     let strLength = workingArr.length-1
     
     for (let i = 1; i < strLength; i++) {
-        if (workingArr[i] === '(' && !operator.includes(workingArr[i-1])) {
+        if (workingArr[i] === '(' && typeof workingArr[i-1] === "number") {
             workingArr.splice(i,0,'*');
             
         }
-        if (workingArr[i-1] === ')' && !operator.includes(workingArr[i])) {
+        if (workingArr[i-1] === ')' && typeof workingArr[i] === "number") {
             workingArr.splice(i,0,'*'); 
         }
         if (workingArr[i-1] === ')' && workingArr[i] === '('){
@@ -64,10 +81,13 @@ const addImpliedX = (string) => {
         }
     }
 
-    for (let j = 0; j < strLength-1; j++) { // adds 0 infront of - signs to use subtraction to make negative number
+    for (let j = 0; j < strLength; j++) { // adds 0 infront of - signs to use subtraction to make negative number
         if (workingArr[j] === '-') {
-            if (j === 0 || operator.filter(word => word !== ')').includes(workingArr[j-1])) {
-                workingArr.splice(j,2,'(','0','-',workingArr[j],')'); 
+            if (j === 0) {
+                workingArr.splice(j,1,'0','-');
+                j++; 
+            } else if (typeof workingArr[j-1] !== "number" && workingArr[j-1] !== ')') {
+                workingArr.splice(j,2,'(','0','-',workingArr[j+1],')'); 
             }
         } 
     }
@@ -83,17 +103,17 @@ const evalulator = (arr) => {
     
     const parenthesis = (pE) => {
         let tempArrP = pE;
-        for(let i = 1; i < tempArrP.length-1; i++) {
+        for(let i = 0; i < tempArrP.length; i++) {
             console.log(tempArrP);
             if (tempArrP[i-1] === '(' && tempArrP[i+1] === ')') {
                 tempArrP.splice(i-1,3, tempArrP[i]);
-                i = 1;
+                i = i-2;
             }
         
             if(i === tempArrP.length-1) {
                 workingArr2 = tempArrP;
                 x = 1;
-            return;
+                return;
             }
         }
         
@@ -101,7 +121,7 @@ const evalulator = (arr) => {
     
     const multiplyAndDivide = (mD) => {
         let tempArrMD = mD;
-        for(let j = 1; j < tempArrMD.length-1; j++) {
+        for(let j = 1; j < tempArrMD.length; j++) {
             if((tempArrMD[j-1] !== ')' && tempArrMD[j+1] !== '(') && (tempArrMD[j] === '*' || tempArrMD[j] === '/')) {
                 let injecteeJ = operatorMain(tempArrMD[j-1],tempArrMD[j], tempArrMD[j+1]);
                 tempArrMD.splice(j-1, 3, injecteeJ);
@@ -121,7 +141,7 @@ const evalulator = (arr) => {
 
     const addAndSubtract = (aS) => {
         let tempArrAS = aS;
-        for(let k = 1; k < tempArrAS.length-1; k++) {
+        for(let k = 1; k < tempArrAS.length; k++) {
             if( tempArrAS[k] === '+' || tempArrAS[k] === '-') {
                 if ( tempArrAS[k-1] !== ')' && tempArrAS[k+1] !== '(' && tempArrAS[k-2] !== '/' && tempArrAS[k-2] !== '*' && tempArrAS[k+2] !== '/' && tempArrAS[k+2] !== '*') {
                     let injecteeK = operatorMain(tempArrAS[k-1],tempArrAS[k], tempArrAS[k+1]);
@@ -161,8 +181,11 @@ const evalulator = (arr) => {
 }
 
 const parser = (str) => {
-    let startArray = addImpliedX(str);
-    let result = evalulator(startArray);
+    const startArray = makeArr(str);
+    const secondArray = arrStrElementsToNum(startArray);
+    const thirdArray = addImpliedX(secondArray);
+    const resultNum = evalulator(thirdArray);
+    const result = numToString(resultNum);
     return result;    
 }
 
