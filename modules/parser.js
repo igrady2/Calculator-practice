@@ -126,7 +126,7 @@ const evalulator = (arr) => {
                 let injecteeJ = operatorMain(tempArrMD[j-1],tempArrMD[j], tempArrMD[j+1]);
                 tempArrMD.splice(j-1, 3, injecteeJ);
                 j = 1; 
-                if (j === tempArrdMD.length-1 && tempArrMD === workingArr2) {
+                if (j === tempArrMD.length-1 && tempArrMD === workingArr2) {
                     x = 2;
                     return;
                 } 
