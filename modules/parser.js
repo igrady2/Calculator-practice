@@ -62,11 +62,11 @@ const operatorMain = (num1,operatorStr,num2) => {
     }
 }
 
-const addImpliedX = (string) => {
-    
+const addImpliedX = (arr) => {
+    let workingArr = arr;
+    const strLength = workingArr.length;
     console.log(`before addImpliedX ${workingArr}`)
-    let strLength = workingArr.length-1
-    
+        
     for (let i = 1; i < strLength; i++) {
         if (workingArr[i] === '(' && typeof workingArr[i-1] === "number") {
             workingArr.splice(i,0,'*');
@@ -126,7 +126,7 @@ const evalulator = (arr) => {
                 let injecteeJ = operatorMain(tempArrMD[j-1],tempArrMD[j], tempArrMD[j+1]);
                 tempArrMD.splice(j-1, 3, injecteeJ);
                 j = 1; 
-                if (j === tempArrdMD.length-1 && tempArrMD === workingArr2) {
+                if (j === tempArrMD.length-1 && tempArrMD === workingArr2) {
                     x = 2;
                     return;
                 } 
