@@ -85,10 +85,12 @@ const addImpliedX = (arr) => {
         if (workingArr[j] === '-') {
             if (j === 0) {
                 workingArr.splice(j,1,'0','-');
+                strLength++;
                 j++; 
             } else if (typeof workingArr[j-1] !== "number" && workingArr[j-1] !== ')') {
                 workingArr.splice(j,2,'(','0','-',workingArr[j+1],')');
                 j = j+2;
+                strLength += 3
             }
         } 
     }
