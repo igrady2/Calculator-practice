@@ -87,7 +87,8 @@ const addImpliedX = (arr) => {
                 workingArr.splice(j,1,'0','-');
                 j++; 
             } else if (typeof workingArr[j-1] !== "number" && workingArr[j-1] !== ')') {
-                workingArr.splice(j,2,'(','0','-',workingArr[j+1],')'); 
+                workingArr.splice(j,2,'(','0','-',workingArr[j+1],')');
+                j = j+3;
             }
         } 
     }

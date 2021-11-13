@@ -51,7 +51,7 @@ function assignButtonListeners() {
 
             }
         }
-        input.innerHTML = '-('.concat(input.innerHTML.unshift).concat(')');
+        input.innerHTML = '- ('.concat(input.innerHTML).concat(')');
     });
 }
 
