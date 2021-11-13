@@ -137,6 +137,12 @@ const evalulator = (arr) => {
                 }
             }
         } 
+        if (tempArrMD === workingArr2) {
+            x = 2;
+        } else {
+            workingArr2 = tempArrMD;
+            x = 0;
+        }
     }
 
     const addAndSubtract = (aS) => {
