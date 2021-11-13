@@ -64,7 +64,7 @@ const operatorMain = (num1,operatorStr,num2) => {
 
 const addImpliedX = (arr) => {
     let workingArr = arr;
-    const strLength = workingArr.length;
+    let strLength = workingArr.length;
     console.log(`before addImpliedX ${workingArr}`)
         
     for (let i = 1; i < strLength; i++) {
