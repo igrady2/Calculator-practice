@@ -125,7 +125,7 @@ const evalulator = (arr) => {
             if((tempArrMD[j-1] !== ')' && tempArrMD[j+1] !== '(') && (tempArrMD[j] === '*' || tempArrMD[j] === '/')) {
                 let injecteeJ = operatorMain(tempArrMD[j-1],tempArrMD[j], tempArrMD[j+1]);
                 tempArrMD.splice(j-1, 3, injecteeJ);
-                j = 1; 
+                j --; 
                 if (j === tempArrMD.length-1 && tempArrMD === workingArr2) {
                     x = 2;
                     return;
@@ -146,15 +146,12 @@ const evalulator = (arr) => {
                 if ( tempArrAS[k-1] !== ')' && tempArrAS[k+1] !== '(' && tempArrAS[k-2] !== '/' && tempArrAS[k-2] !== '*' && tempArrAS[k+2] !== '/' && tempArrAS[k+2] !== '*') {
                     let injecteeK = operatorMain(tempArrAS[k-1],tempArrAS[k], tempArrAS[k+1]);
                     tempArrAS.splice(k-1, 3, injecteeK);
-                    k = 1;
-                }
-                if (k === tempArrAS.length-1) {
-                    workingArr2 = tempArrAS 
-                    x = 0;
-                    return;
+                    k --;
                 }
             }     
         }
+        workingArr2 = tempArrAS 
+        x = 0;
     }
 
     do {
